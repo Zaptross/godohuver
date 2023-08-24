@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"regexp"
 	"strings"
 )
 
@@ -18,10 +17,6 @@ var (
 	ErrInvalidCount      = fmt.Errorf("count must be greater than 0 and less than 100")
 	ErrEmptyRepository   = fmt.Errorf("repository must not be empty")
 	ErrInvalidRepository = fmt.Errorf("repository must be in the format of <user>/repo, <org>/<repo>, _/<repo>, or <repo> (for official images)")
-)
-
-var (
-	repositoryRegex = regexp.MustCompile(`^[\w-]+/[\w-]+$`)
 )
 
 func GetTagsFromRepository(repository string, count int) ([]DockerHubImage, error) {

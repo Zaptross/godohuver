@@ -1,5 +1,11 @@
 package dockerhub
 
+import "regexp"
+
+var (
+	repositoryRegex = regexp.MustCompile(`^([\w-]+/)*[\w-]+$`)
+)
+
 func validateCount(count int) error {
 	if count < 1 || count > 100 {
 		return ErrInvalidCount
